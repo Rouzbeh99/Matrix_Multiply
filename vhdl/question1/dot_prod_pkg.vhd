@@ -5,29 +5,33 @@ use ieee.numeric_std.all;
 library ieee_proposed;
 use ieee_proposed.float_pkg.all;
 
+-- declaration of package
+
 package dot_prod_pkg is
 
     constant n : integer := 2;
 
-    type t_in_vec is array (0 to n) of float32;
-    type t_out_vec is array (0 to n) of float32;
+    type vec_type is array (0 to n) of float32;
 
-    function dot_prod (a : t_in_vec; b : t_in_vec) return float32;
+    function dot_prod (a : vec_type; b : vec_type) return float32;
 
     component dot_prod_top is
         port(
                 i_CLK       : in std_logic;
                 i_RST       : in std_logic;
-                i_A         : in t_in_vec;
-                i_B         : in t_in_vec;
+                i_A         : in vec_type;
+                i_B         : in vec_type;
                 o_C         : out float32
             );
     end component;
 end package dot_prod_pkg;
 
+
+-- implementation of the logic
+
 package body dot_prod_pkg is
 
-    function dot_prod (a : t_in_vec; b : t_in_vec) return float32 is
+    function dot_prod (a : vec_type; b : vec_type) return float32 is
         variable res : float32 := (others =>'0');
         variable i : integer := 0;
 
