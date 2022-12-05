@@ -5,13 +5,11 @@ use ieee.numeric_std.all;
 
 -- declaration of package
 
-package dot_prod_pkg is
+ENTITY dot_prod_pkg is
 
     constant n : integer := 2;
 
     type vec_type is array (0 to n) of std_logic_vector(15 DOWNTO 0);
-
-    function dot_prod (a : vec_type; b : vec_type) return std_logic_vector(15 DOWNTO 0) ;
 
     component dot_prod_top is
         port(
@@ -22,21 +20,16 @@ package dot_prod_pkg is
                 o_C         : out std_logic_vector(15 DOWNTO 0)
             );
     end component;
-end package dot_prod_pkg;
+end ENTITY dot_prod_pkg;
 
+architecture behave of dot_prod_pkg is
 
--- implementation of the logic
+    variable c_inner : vec_type;
+    variable i : integer := 0;
+    begin
+        for i in 0 to a'length-1 loop
+            c(i+1) := c(i) + (a(i)*b(i));   -------------------------
+        end loop;
+    end
 
-package body dot_prod_pkg is
-
-    function dot_prod (a : vec_type; b : vec_type) return std_logic_vector(15 DOWNTO 0) is
-        variable res : std_logic_vector(15 DOWNTO 0) := (others =>'0');
-        variable i : integer := 0;
-
-        begin
-            for i in 0 to a'length-1 loop
-                res := res + (a(i)*b(i));
-            end loop;
-        return res;
-    end dot_prod;
-end dot_prod_pkg;
+end behave;
