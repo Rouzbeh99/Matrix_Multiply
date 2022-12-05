@@ -3,7 +3,6 @@ use ieee.std_logic_1164.ALL;
 use ieee.numeric_std.all;
 use work.dot_prod_pkg.all;
 
-library ieee_proposed;
 use ieee_proposed.float_pkg.all;
 
 entity dot_prod_tb is
@@ -17,7 +16,7 @@ architecture behave of dot_prod_tb is
     signal r_RST    : std_logic                 := '0';
     signal r_A      : vec_type                  := (others => (others => '0'));
     signal r_B      : vec_type                  := (others => (others => '0'));
-    signal w_RESULT : float32                   := (others => '0');
+    signal w_RESULT : integer                   := (others => '0');
 begin
 
   DOT_PROD_TOP_INST : dot_prod_top
