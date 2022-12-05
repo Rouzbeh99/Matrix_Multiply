@@ -16,7 +16,7 @@ architecture behave of dot_prod_tb is
     signal r_RST    : std_logic                 := '0';
     signal r_A      : vec_type                  := (others => (others => '0'));
     signal r_B      : vec_type                  := (others => (others => '0'));
-    signal w_RESULT : integer                   := (others => '0');
+    signal w_RESULT : std_logic_vector(15 DOWNTO 0)                   := (others => '0');
 begin
 
   DOT_PROD_TOP_INST : dot_prod_top

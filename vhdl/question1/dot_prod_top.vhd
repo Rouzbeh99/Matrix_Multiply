@@ -11,13 +11,13 @@ entity dot_prod_top is
         i_RST       : in std_logic;
         i_A         : in t_in_vec;
         i_B         : in t_in_vec;
-        o_C         : out integer
+        o_C         : out std_logic_vector(16 DOWNTO 0)
         );
 end dot_prod_top;
 
 architecture behave of dot_prod_top is
 
-    signal r_RESULT : integer               := (others => '0');
+    signal r_RESULT : std_logic_vector(15 DOWNTO 0)                := (others => '0');
     signal r_A      : vec_type              := (others => (others => '0'));
     signal r_B      : vec_type              := (others => (others => '0'));
 
