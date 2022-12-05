@@ -19,8 +19,8 @@ end dot_prod_top;
 architecture behave of dot_prod_top is
 
     signal r_RESULT : float32               := (others => '0');
-    signal r_A      : t_in_vec              := (others => (others => '0'));
-    signal r_B      : t_in_vec              := (others => (others => '0'));
+    signal r_A      : vec_type              := (others => (others => '0'));
+    signal r_B      : vec_type              := (others => (others => '0'));
 
 begin
 
@@ -34,4 +34,5 @@ begin
    r_A <= i_A;
    r_B <= i_B;
    o_C <= r_RESULT;
+
 end behave;

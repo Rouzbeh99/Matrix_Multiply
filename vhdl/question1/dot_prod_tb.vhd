@@ -15,13 +15,9 @@ architecture behave of dot_prod_tb is
 
     signal r_CLK    : std_logic                 := '0';
     signal r_RST    : std_logic                 := '0';
-    signal r_A      : t_in_vec                  := (others => (others => '0'));
-    signal r_B      : t_in_vec                  := (others => (others => '0'));
+    signal r_A      : vec_type                  := (others => (others => '0'));
+    signal r_B      : vec_type                  := (others => (others => '0'));
     signal w_RESULT : float32                   := (others => '0');
-
-    signal x        : float32                   := (others => '0');
-    signal y        : float32                   := (others => '0');
-
 begin
 
   DOT_PROD_TOP_INST : dot_prod_top
@@ -45,18 +41,18 @@ begin
     r_RST <= '1';
     wait for c_CLK_PERIOD;
     r_RST <= '0';
-    r_A <= (x+1,x+1,x+1);
-    r_B <= (x+1,x+1,x+1);
+    r_A <= (1,1,1);
+    r_B <= (1,1,1);
     wait for c_CLK_PERIOD;
-    if w_RESULT = y+3 then
+    if w_RESULT = 3 then
         report "SUCESS";
     else
         report "FAILURE";
     end if;
-    r_A <= (x+2,x+2,x+2);
-    r_B <= (x+3,x+3,x+3);
+    r_A <= (2,2,2);
+    r_B <= (3,3,3);
     wait for c_CLK_PERIOD;
-    if w_RESULT = y+18 then
+    if w_RESULT = 18 then
         report "SUCESS";
     else
         report "FAILURE";
