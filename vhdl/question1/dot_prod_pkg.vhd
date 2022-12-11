@@ -22,14 +22,16 @@ ENTITY dot_prod_pkg is
     end component;
 end ENTITY dot_prod_pkg;
 
-architecture behave of dot_prod_pkg is
+architecture sequential of dot_prod_pkg is
 
-    variable c_inner : vec_type;
+    variable c : out std_logic_vector(17 DOWNTO 0);
     variable i : integer := 0;
-    begin
-        for i in 0 to a'length-1 loop
-            c(i+1) := c(i) + (a(i)*b(i));   -------------------------
+begin
+        c(0) <= '0';
+        for i in 1 to a'length loop
+            c(i) := c(i-1) + (a(i-1)*b(i-1));
         end loop;
-    end
 
-end behave;
+        o_C <= c(c'length-1)
+
+end sequential;
