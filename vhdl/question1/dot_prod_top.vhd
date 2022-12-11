@@ -3,23 +3,22 @@ use ieee.std_logic_1164.ALL;
 use ieee.numeric_std.all;
 use work.dot_prod_pkg.all;
 
-use ieee_proposed.float_pkg.all;
 
 entity dot_prod_top is
     port (
         i_CLK       : in std_logic;
         i_RST       : in std_logic;
-        i_A         : in t_in_vec;
-        i_B         : in t_in_vec;
+        i_A         : in vec_type;
+        i_B         : in vec_type;
         o_C         : out std_logic_vector(16 DOWNTO 0)
         );
 end dot_prod_top;
 
 architecture behave of dot_prod_top is
 
-    signal r_RESULT : array (0 to n) of std_logic_vector(15 DOWNTO 0);
-    signal r_A      : array (0 to n) of std_logic_vector(15 DOWNTO 0);
-    signal r_B      : array (0 to n) of std_logic_vector(15 DOWNTO 0);
+    signal r_RESULT : vec_type;
+    signal r_A      : vec_type;
+    signal r_B      : vec_type;
 
 begin
 

@@ -15,8 +15,8 @@ architecture behave of dot_prod_tb is
 
     signal r_CLK    : std_logic                 := '0';
     signal r_RST    : std_logic                 := '0';
-    signal r_A      : array (0 to n) of std_logic_vector(15 DOWNTO 0)                  := (others => (others => '0'));
-    signal r_B      : array (0 to n) of std_logic_vector(15 DOWNTO 0)                  := (others => (others => '0'));
+    signal r_A      : vec_type                  := (others => (others => '0'));
+    signal r_B      : vec_type                  := (others => (others => '0'));
     signal w_RESULT : std_logic_vector(15 DOWNTO 0)                   := (others => '0');
 begin
 
