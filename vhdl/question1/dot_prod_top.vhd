@@ -17,6 +17,8 @@ end dot_prod_top;
 
 architecture behave of dot_prod_top is
 
+    constant n : integer := 2;
+    type vec_type is array (0 to n) of std_logic_vector(15 DOWNTO 0);
     signal r_RESULT : std_logic_vector(15 DOWNTO 0)                := (others => '0');
     signal r_A      : vec_type              := (others => (others => '0'));
     signal r_B      : vec_type              := (others => (others => '0'));
