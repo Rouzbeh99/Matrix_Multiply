@@ -25,16 +25,19 @@ ENTITY dot_prod_pkg is
 end ENTITY dot_prod_pkg;
 
 architecture sequential of dot_prod_pkg is
+begin
+    process(rest) is
     variable n : integer := 2;
     variable i : integer := 0;
     signal c   : vec_type;
 
-begin
         c(0) <= (others => '0');
         for i in 1 to i_A'length loop
             c(i) <= c(i-1) + (i_A(i-1)*i_B(i-1));
         end loop;
 
         o_C <= c(c'length-1);
+
+        end process;
 
 end sequential;
